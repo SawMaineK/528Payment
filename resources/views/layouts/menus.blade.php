@@ -85,3 +85,4 @@
 		<p>@lang('staffReceiveTranscations/index.model_name')</p>
 	</a>
 </li>
+

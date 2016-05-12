@@ -142,3 +142,11 @@ Route::get('staffReceiveTranscations/{id}/delete', [
     'as' => 'administration.staffReceiveTranscations.delete',
     'uses' => 'StaffReceiveTranscationController@destroy',
 ]);
+
+
+Route::resource('users', 'UserController');
+
+Route::get('users/{id}/delete', [
+    'as' => 'administration.users.delete',
+    'uses' => 'UserController@destroy',
+]);

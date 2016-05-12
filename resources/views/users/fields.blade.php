@@ -4,7 +4,7 @@
 	    {!! Form::label('name', Lang::get('users/fields.name'),['class' => 'col-sm-4 col-lg-2 control-label']) !!}
 	    <div class="col-sm-6 col-lg-6"> 
 	        
-			{!! Form::select('name', [ '' => '' ], null, ['class' => 'select2able']) !!}
+			{!! Form::text('name', null, ['class' => 'form-control']) !!}
 	        @if ($errors->has('name'))
 	            <span class="help-block">
 	                <strong>{{ $errors->first('name') }}</strong>
