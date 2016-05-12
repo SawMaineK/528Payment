@@ -64,10 +64,25 @@ class UserAPIController extends AppBaseController
 		}
 
 		$input = $request->all();
+		$paymentUser = null;
+		$user = User::where('email', $input['email'])->first();
+		if($user){
+			$users = $this->userRepository->updateRich($input, $user->id);
+			if($users){
+				$paymentUser = PaymentUser::with('user')->where('user_id', $users->id)->first();
+			}
+			
+		}else{
+			$users = $this->userRepository->create($input);
+			if($users){
+				$paymentUser = new PaymentUser();
+				$paymentUser->user_id = $users->id;
+				$paymentUser->save();
+				$paymentUser['user'] = $users;
+			}
+		}
 
-		$users = $this->userRepository->create($input);
-
-		return $this->sendResponse($users->toArray(), "User saved successfully");
+		return $this->sendResponse($paymentUser->toArray(), "User saved successfully");
 	}
 
 	/**
