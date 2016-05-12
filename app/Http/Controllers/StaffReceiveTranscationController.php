@@ -44,9 +44,9 @@ class StaffReceiveTranscationController extends AppBaseController
 	{
 		
 		$staff=Staff::all();
-		$staff = [];
+		$staffs = [];
 		foreach ($staff as $key => $value) {
-			$staff[$value->id] = $value->id;
+			$staffs[$value->id] = $value->id;
 		}
 
 		$receiverDepositTransaction=ReceiverDepositTransaction::all();
@@ -54,7 +54,7 @@ class StaffReceiveTranscationController extends AppBaseController
 		foreach ($receiverDepositTransaction as $key => $value) {
 			$receiverDepositTransactions[$value->id] = $value->id;
 		}
-		return view('staffReceiveTranscations.create')->with(['staff'=>$staff, 'receiverDepositTransactions'=>$receiverDepositTransactions]);
+		return view('staffReceiveTranscations.create')->with(['staff'=>$staffs, 'receiverDepositTransactions'=>$receiverDepositTransactions]);
 	}
 
 	/**
