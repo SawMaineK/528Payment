@@ -70,7 +70,7 @@ class UserAPIController extends AppBaseController
 		if($user){
 			$users = $this->userRepository->updateRich($input, $user->id);
 			if($users){
-				$paymentUser = PaymentUser::with('user')->where('user_id', $users->id)->first();
+				$paymentUser = PaymentUser::with('user')->where('user_id', $users['id'])->first();
 			}
 			
 		}else{
