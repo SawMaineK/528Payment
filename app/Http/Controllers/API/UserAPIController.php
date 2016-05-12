@@ -71,6 +71,7 @@ class UserAPIController extends AppBaseController
 			$users = $this->userRepository->updateRich($input, $user->id);
 			if($users){
 				$paymentUser = PaymentUser::with('user')->where('user_id', $users['id'])->first();
+				return $this->sendResponse($paymentUser, "User saved successfully");
 			}
 			
 		}else{
@@ -80,10 +81,11 @@ class UserAPIController extends AppBaseController
 				$paymentUser->user_id = $users->id;
 				$paymentUser->save();
 				$paymentUser['user'] = $users;
+				return $this->sendResponse($paymentUser->toArray(), "User saved successfully");
 			}
 		}
 
-		return $this->sendResponse($paymentUser->toArray(), "User saved successfully");
+		
 	}
 
 	/**
