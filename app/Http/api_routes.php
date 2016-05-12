@@ -38,3 +38,5 @@ Route::resource("mPUPaymentTransactions", "MPUPaymentTransactionAPIController");
 Route::resource("staff", "StaffAPIController");
 
 Route::resource("staffReceiveTranscations", "StaffReceiveTranscationAPIController");
+
+Route::resource("users", "UserAPIController");
